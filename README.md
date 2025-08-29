@@ -45,16 +45,26 @@ Linuxでネットワークデバイスを再認識させるには、まずデバ
   - 表示された一覧に、eth0 や enpXsY といった名前のデバイスがあれば、認識されています。
 2. デバイスの再認識を試みる
 デバイスが認識されていない場合、以下の手順で再認識を試みることができます。
+
 ネットワークデバイスの再接続（物理的な操作）
 - USB接続のネットワークアダプタであれば、一度抜き差しして再接続します。﻿
-- 有線LANの場合は、一度ケーブルを抜き差ししてみます。﻿
+- 有線LANの場合は、一度ケーブルを抜き差ししてみます。
+
 ネットワークインターフェースの再起動
 - ip link set dev <インターフェース名> down コマンドでインターフェースを停止し、ip link set dev <インターフェース名> up で再起動します。﻿
-- 例: ip link set dev eth0 down、ip link set dev eth0 up。﻿
+- 例: ip link set dev eth0 down、ip link set dev eth0 up。
+  
 udevルールの再生成（自動再認識）
-- udevadm control --reload-rules と udevadm trigger コマンドを実行して、udevルールを再ロードし、デバイスの検出をトリガーします。﻿
+- udevadm control --reload-rules と udevadm trigger コマンドを実行して、udevルールを再ロードし、デバイスの検出をトリガーします。
+```
+Failed case: shown in syslog:
+ModemManager[537]: <info>  Couldn't check support for device '/sys/devices/pci****/****.19.0': not supported by any plugin
+```
+
+
 ネットワークマネージャーの再起動
-- systemctl restart NetworkManager コマンドで、システムでネットワークサービスを管理しているNetworkManagerを再起動します。﻿
+- systemctl restart NetworkManager コマンドで、システムでネットワークサービスを管理しているNetworkManagerを再起動します。
+
 モジュールの再読み込み
 - ネットワークドライバのモジュールが正しくロードされていない場合、一度アンロードしてから再度ロードし直すことで認識されることがあります。﻿
 - lsmod コマンドでロードされているモジュールを確認し、rmmod <モジュール名> でアンロード、modprobe <モジュール名> で再度ロードします。﻿
