@@ -13,7 +13,7 @@ With default keybindings, this would be something like:
 - Enter to mark the end of the text to be copied, and copy it.
 - Then open up vim, run :set paste to avoid issues with e.g. auto-indentation, and then use Ctrl-A ] to paste.
 
-# dhclient could not discover the server due to hardware malfunction
+# dhclient could not discover the server due to some reason: How to check
 
 The "dhclient dhcpdiscover no such device" error means dhclient can't find or bind to the network interface you specified for DHCP discovery. To fix it, verify the network interface name is correct and you have root/sudo privileges, then check for a problematic lease file in /var/lib/dhcp or a long device name that dhclient may not handle well. 
 Troubleshooting Steps
