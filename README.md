@@ -36,12 +36,26 @@ Troubleshooting Steps
 - If the issue persists, consider resetting network settings to their defaults, which can help resolve underlying configuration issues.
 
 # How to check the device
-1. Check the device recognition status
-First, check if the network device is recognized by the system.﻿
-- ip aOr ifconfiguse the command:
--- ip adisplays information about the current network interface.
--- ifconfigdisplays the network interface status and settings.
--- eth0 If you see a device named something like or in the list that appears enpXsY, it is recognized.
-
-2. Try re-recognizing the device
+Linuxでネットワークデバイスを再認識させるには、まずデバイスが認識されているかを確認し、認識されていない場合は、デバイスドライバ（モジュール）を再読み込みするなどの方法があります。﻿
+1. デバイスの認識状態を確認する
+まず、ネットワークデバイスがシステムに認識されているかどうかを確認します。﻿
+ip a または ifconfig コマンドを使用する。
+ip a は現在のネットワークインターフェースの情報を表示します。
+ifconfig はネットワークインターフェースの動作状況や設定を表示します。
+表示された一覧に、eth0 や enpXsY といった名前のデバイスがあれば、認識されています。
+2. デバイスの再認識を試みる
+デバイスが認識されていない場合、以下の手順で再認識を試みることができます。
+ネットワークデバイスの再接続（物理的な操作）
+USB接続のネットワークアダプタであれば、一度抜き差しして再接続します。﻿
+有線LANの場合は、一度ケーブルを抜き差ししてみます。﻿
+ネットワークインターフェースの再起動
+ip link set dev <インターフェース名> down コマンドでインターフェースを停止し、ip link set dev <インターフェース名> up で再起動します。﻿
+例: ip link set dev eth0 down、ip link set dev eth0 up。﻿
+udevルールの再生成（自動再認識）
+udevadm control --reload-rules と udevadm trigger コマンドを実行して、udevルールを再ロードし、デバイスの検出をトリガーします。﻿
+ネットワークマネージャーの再起動
+systemctl restart NetworkManager コマンドで、システムでネットワークサービスを管理しているNetworkManagerを再起動します。﻿
+モジュールの再読み込み
+ネットワークドライバのモジュールが正しくロードされていない場合、一度アンロードしてから再度ロードし直すことで認識されることがあります。﻿
+lsmod コマンドでロードされているモジュールを確認し、rmmod <モジュール名> でアンロード、modprobe <モジュール名> で再度ロードします。﻿
 
