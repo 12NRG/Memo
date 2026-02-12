@@ -69,3 +69,5 @@ ModemManager[537]: <info>  Couldn't check support for device '/sys/devices/pci**
 - ネットワークドライバのモジュールが正しくロードされていない場合、一度アンロードしてから再度ロードし直すことで認識されることがあります。﻿
 - lsmod コマンドでロードされているモジュールを確認し、rmmod <モジュール名> でアンロード、modprobe <モジュール名> で再度ロードします。﻿
 
+## Git
+[git push --force-with-leaseでpushを強制する #Git - Qiita](https://qiita.com/yuuu1654/items/f2dc683dc5bc8b16007b)
