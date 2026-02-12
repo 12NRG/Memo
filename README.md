@@ -71,3 +71,4 @@ ModemManager[537]: <info>  Couldn't check support for device '/sys/devices/pci**
 
 ## Git
 [git push --force-with-leaseでpushを強制する #Git - Qiita](https://qiita.com/yuuu1654/items/f2dc683dc5bc8b16007b)
+[Is there a &quot;git pull --dry-run&quot; option in Git? - Stack Overflow](https://stackoverflow.com/questions/17222440/is-there-a-git-pull-dry-run-option-in-git)
